@@ -4,15 +4,22 @@ var path = require('path')
 
 var isDeveloping = process.env.NODE_ENV !== 'production'
 
-// var webpack = require('webpack')
-// var webpackConfig = require('./webpack.config.js')
+var webpack = require('webpack')
+var webpackConfig = require('./webpack.config.js')
+var webpackDevMiddleware = require("webpack-dev-middleware")
+var compiler = webpack(webpackConfig)
 
 var app = express()
 
-app.use(express.static(path.join(__dirname, 'public')))
 // app.get('*', function response (req, res) {
 //   res.sendFile(path.join(__dirname, 'public/index.html'))
 // })
+
+app.use(webpackDevMiddleware(compiler, {
+  stats: {colors: true},
+  publicPath: '/'
+}))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(config.http.port, config.http.address, function onStart (err) {
   if (err) {

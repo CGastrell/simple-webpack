@@ -1,7 +1,6 @@
 console.log('eli-boot')
 
 import $ from 'jquery'
-import underscore from 'underscore'
 
 $('body').append('<h1>Hola pungo</h1>')
 

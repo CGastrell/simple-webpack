@@ -11,14 +11,14 @@ module.exports = {
     publicPath: '/'
   },
   module: {
-    // loaders: [
-    //   {
-    //     test: /\.js$/,
-    //     exclude: /node_modules/,
-    //     loader: 'babel-loader',
-    //     query: { 'presets': ['es2015', 'stage-0'] }
-    //   }
-    // ]
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: { 'presets': ['es2015', 'stage-0'] }
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
